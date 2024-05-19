@@ -1,7 +1,9 @@
+import useAxiosPublic from "./useAxiosPublic";
+import useGetData from "./useGetData";
 
 
 const Delete = () => {
-    const [bookings,refetch]=useBookings()
+    const [bookings,refetch]=useGetData()
     const axiosPublic=useAxiosPublic()
     const handleCancel=(id)=>{
 
@@ -16,7 +18,7 @@ const Delete = () => {
         }) .then((result) => {
             if (result.isConfirmed) {
     
-                axiosSecure.delete(`/guidebookings/${id}`)
+                axiosPublic.delete(`/guidebookings/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
